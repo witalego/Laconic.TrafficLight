@@ -19,12 +19,15 @@ enum LightMode
 class TrafficLight
 {
     private:
+        static const int InitStepDelay = 400;
         Switch _red;
         Switch _amber;
         Switch _green;
     public:
         TrafficLight(int redPin, int amberPin, int greenPin);
         void SetMode(LightMode mode);
+        void PlayInit();
+        void ShowInconclusive();
 };
 
 #endif
