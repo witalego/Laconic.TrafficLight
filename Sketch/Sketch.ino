@@ -13,20 +13,20 @@ void setup()
 
 void loop()
 {
-    Lights lights[] = {
-        LIGHTS_ALL,
-        LIGHTS_RED,
-        LIGHTS_AMBER,
-        LIGHTS_GREEN,
-        LIGHTS_RED_AMBER,
-        LIGHTS_AMBER_GREEN,
-        LIGHTS_RED_GREEN,
-        LIGHTS_NONE
+    LightMode lights[] = {
+        LIGHT_MODE_ALL,
+        LIGHT_MODE_RED,
+        LIGHT_MODE_AMBER,
+        LIGHT_MODE_GREEN,
+        LIGHT_MODE_RED_AMBER,
+        LIGHT_MODE_AMBER_GREEN,
+        LIGHT_MODE_RED_GREEN,
+        LIGHT_MODE_NONE
     };
 
     for (int i = 0; i < 8; ++i)
     {
-        _traffic.Switch(lights[i]);
+        _traffic.SetMode(lights[i]);
         delay(DELAY);
     }
 }

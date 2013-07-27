@@ -1,17 +1,17 @@
 #include "Arduino.h"
 
-#ifndef Light_h
-#define Light_h
+#ifndef Switch_h
+#define Switch_h
 
-class Light
+class Switch
 {
     private:
         int _pin;
     public:
-        Light(int pin);
+        Switch(int pin);
         void On();
         void Off();
-        void Switch(byte state);
+        void Set(int state);
 };
 
 #endif

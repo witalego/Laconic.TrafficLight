@@ -1,24 +1,24 @@
 #include "Arduino.h"
-#include "Light.h"
+#include "Switch.h"
 
-Light::Light(int pin)
+Switch::Switch(int pin)
 {
     _pin = pin;
 
     pinMode(_pin, OUTPUT);
 }
 
-void Light::On()
+void Switch::On()
 {
     digitalWrite(_pin, HIGH);
 }
 
-void Light::Off()
+void Switch::Off()
 {
     digitalWrite(_pin, LOW);
 }
 
-void Light::Switch(byte state)
+void Switch::Set(int state)
 {
     digitalWrite(_pin, state == 0 ? LOW : HIGH);
 }

@@ -6,9 +6,9 @@ TrafficLight::TrafficLight(int redPin, int amberPin, int greenPin)
 {
 }
 
-void TrafficLight::Switch(Lights lights)
+void TrafficLight::SetMode(LightMode mode)
 {
-    _red.Switch(lights & 0100);
-    _amber.Switch(lights & 0010);
-    _green.Switch(lights & 0001);
+    _red.Set(mode & 0100);
+    _amber.Set(mode & 0010);
+    _green.Set(mode & 0001);
 }
