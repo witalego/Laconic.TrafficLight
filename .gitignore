@@ -1,2 +1,4 @@
-TeamCity.TrafficLightListener/dist/* 
+*/.idea/workspace.xml
+*/.idea/tasks.xml
+TeamCity.TrafficLightListener/dist/*
 TeamCity.TrafficLightListener/out/*
