@@ -155,7 +155,6 @@
   
   <path id="server.module.sourcepath">
     <dirset dir="${module.server.basedir}">
-      <include name="resources"/>
       <include name="src"/>
     </dirset>
   </path>
@@ -174,10 +173,6 @@
     </javac>
     
     <copy todir="${server.output.dir}">
-      <fileset dir="${module.server.basedir}/resources">
-        <patternset refid="compiler.resources"/>
-        <type type="file"/>
-      </fileset>
       <fileset dir="${module.server.basedir}/src">
         <patternset refid="compiler.resources"/>
         <type type="file"/>

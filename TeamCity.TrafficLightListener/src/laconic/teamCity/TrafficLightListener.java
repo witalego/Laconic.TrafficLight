@@ -1,4 +1,4 @@
-package jetbrains.sample.serverListener;
+package laconic.teamCity;
 
 import jetbrains.buildServer.BuildAgent;
 import jetbrains.buildServer.BuildProblemData;
@@ -27,13 +27,6 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.*;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Alexei
- * Date: 8/18/13
- * Time: 12:06 PM
- * To change this template use File | Settings | File Templates.
- */
 public class TrafficLightListener implements BuildServerListener {
     public static final int TimerDelay = 5000;
     public static final int TimerPeriod = 15000;
@@ -61,6 +54,7 @@ public class TrafficLightListener implements BuildServerListener {
             socket.setBroadcast(true);
         }
         catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
