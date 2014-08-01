@@ -2,5 +2,6 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans default-autowire="constructor">
+  <bean id="trafficLightMainConfigProcessor" class="laconic.teamCity.TrafficLightMainConfigProcessor"/>
   <bean id="trafficLightListener" class="laconic.teamCity.TrafficLightListener" init-method="register"/>
 </beans>

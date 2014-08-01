@@ -18,6 +18,7 @@ import jetbrains.buildServer.vcs.VcsModification;
 import jetbrains.buildServer.vcs.VcsRoot;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import sun.security.x509.IPAddressName;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -43,17 +44,21 @@ public class TrafficLightListener implements BuildServerListener {
     public TrafficLightListener(SBuildServer sBuildServer) {
         buildServer = sBuildServer;
 
-        try {
-            IpAddress = InetAddress.getByAddress(new byte[]{(byte)255, (byte)255, (byte)255, (byte)255});
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-        }
+        setInetAddress("255.255.255.255");
 
         try {
             socket = new DatagramSocket();
             socket.setBroadcast(true);
         }
         catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void setInetAddress(String ipAddress) {
+        try {
+            IpAddress = InetAddress.getByName(ipAddress);
+        } catch (UnknownHostException e) {
             e.printStackTrace();
         }
     }
