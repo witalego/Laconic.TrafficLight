@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="server" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="TeamCity Tomcat">
+  <configuration default="false" name="server" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="TeamCity Tomcat" ALTERNATIVE_JRE_ENABLED="false">
     <option name="COMMON_VM_ARGUMENTS" value="-Xmx256m -XX:MaxPermSize=92m -Dlog4j.configuration=file:../conf/teamcity-server-log4j.xml -Dteamcity_logs=../logs/" />
     <option name="UPDATING_POLICY" value="restart-server" />
     <deployment />
@@ -37,15 +37,15 @@
       <option name="USE_ENV_VARIABLES" value="true" />
       <STARTUP>
         <option name="USE_DEFAULT" value="true" />
-        <option name="SCRIPT" value="" />
+        <option name="SCRIPT" value="$TeamCityDistribution$/bin/catalina.bat" />
         <option name="VM_PARAMETERS" value="" />
-        <option name="PROGRAM_PARAMETERS" value="" />
+        <option name="PROGRAM_PARAMETERS" value=" run" />
       </STARTUP>
       <SHUTDOWN>
         <option name="USE_DEFAULT" value="true" />
-        <option name="SCRIPT" value="" />
+        <option name="SCRIPT" value="$TeamCityDistribution$/bin/catalina.bat" />
         <option name="VM_PARAMETERS" value="" />
-        <option name="PROGRAM_PARAMETERS" value="" />
+        <option name="PROGRAM_PARAMETERS" value=" stop" />
       </SHUTDOWN>
     </ConfigurationWrapper>
     <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile ">
@@ -67,15 +67,15 @@
       <option name="USE_ENV_VARIABLES" value="true" />
       <STARTUP>
         <option name="USE_DEFAULT" value="true" />
-        <option name="SCRIPT" value="" />
+        <option name="SCRIPT" value="$TeamCityDistribution$/bin/catalina.bat" />
         <option name="VM_PARAMETERS" value="" />
-        <option name="PROGRAM_PARAMETERS" value="" />
+        <option name="PROGRAM_PARAMETERS" value=" run" />
       </STARTUP>
       <SHUTDOWN>
         <option name="USE_DEFAULT" value="true" />
-        <option name="SCRIPT" value="" />
+        <option name="SCRIPT" value="$TeamCityDistribution$/bin/catalina.bat" />
         <option name="VM_PARAMETERS" value="" />
-        <option name="PROGRAM_PARAMETERS" value="" />
+        <option name="PROGRAM_PARAMETERS" value=" stop" />
       </SHUTDOWN>
     </ConfigurationWrapper>
     <method>
