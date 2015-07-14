@@ -17,25 +17,24 @@ public class TrafficLightMainConfigProcessor implements MainConfigProcessor {
 
     public TrafficLightMainConfigProcessor(TrafficLightListener trafficLightListener) {
         this.trafficLightListener = trafficLightListener;
-        Log.info("TrafficLightMainConfigProcessor - constructor");
     }
 
     public void readFrom(Element rootElement) {
-        Log.info("TrafficLightMainConfigProcessor - readFrom");
-
         Element element = rootElement.getChild("LaconicTeamCityTrafficLightListener");
         if (element == null) {
-            Log.info("TrafficLightMainConfigProcessor - readFrom - element is null.");
+            Log.info("[TrafficLightMainConfigProcessor][readFrom] element is null.");
             return;
         }
 
         Attribute updateIpAddressAttribute = element.getAttribute("UpdateIpAddress");
         if (updateIpAddressAttribute == null) {
-            Log.info("TrafficLightMainConfigProcessor - readFrom - updateIpAddressAttribute is null.");
+            Log.info("[TrafficLightMainConfigProcessor][readFrom] updateIpAddressAttribute is null.");
             return;
         }
 
-        trafficLightListener.setInetAddress(updateIpAddressAttribute.getValue());
+        String ip = updateIpAddressAttribute.getValue();
+        Log.info("[TrafficLightMainConfigProcessor][readFrom] ip is " + ip);
+        trafficLightListener.setInetAddress(ip);
     }
 
     public void writeTo(Element parentElement) {
