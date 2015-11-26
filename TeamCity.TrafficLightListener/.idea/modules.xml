@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/server.iml" filepath="$PROJECT_DIR$/server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/build/build.iml" filepath="$PROJECT_DIR$/build/build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/trafficLightPlugin.iml" filepath="$PROJECT_DIR$/trafficLightPlugin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/trafficLightPlugin-server/trafficLightPlugin-server.iml" filepath="$PROJECT_DIR$/trafficLightPlugin-server/trafficLightPlugin-server.iml" />
     </modules>
   </component>
 </project>
-
