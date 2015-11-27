@@ -4,6 +4,10 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
        default-autowire="constructor">
     <bean class="com.localhost.teamcity.trafficLightPlugin.AppServer" />
+
+    <bean id="trafficLightMainSettings" class="com.localhost.teamcity.trafficLightPlugin.config.TrafficLightMainSettings"/>
+    <bean id="trafficLightMainConfigProcessor" class="com.localhost.teamcity.trafficLightPlugin.config.TrafficLightMainConfigProcessor"/>
+
     <bean id="trafficLightListener" class="com.localhost.teamcity.trafficLightPlugin.TrafficLightServer" init-method="register" />
-    <bean id="trafficLightAdminPage" class="com.localhost.teamcity.trafficLightPlugin.admin.TrafficLightAdminPage" />
+    <bean id="trafficLightAdminPage" class="com.localhost.teamcity.trafficLightPlugin.ui.admin.TrafficLightSettingsAdminPage" />
 </beans>
