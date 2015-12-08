@@ -1,7 +1,6 @@
 package com.localhost.teamcity.trafficLightPlugin.ui.admin;
 
-import com.localhost.teamcity.trafficLightPlugin.config.TrafficLightMainConfigProcessor;
-import com.localhost.teamcity.trafficLightPlugin.config.TrafficLightMainSettings;
+import com.localhost.teamcity.trafficLightPlugin.config.TrafficLightMainConfig;
 import jetbrains.buildServer.controllers.admin.AdminPage;
 import jetbrains.buildServer.serverSide.auth.Permission;
 import jetbrains.buildServer.web.openapi.PagePlaces;
@@ -14,16 +13,16 @@ import java.util.Map;
 
 public class TrafficLightSettingsAdminPage extends AdminPage
 {
-    private TrafficLightMainSettings _trafficLightMainSettings;
+    private TrafficLightMainConfig _trafficLightMainConfig;
 
     public TrafficLightSettingsAdminPage(
-            @NotNull PagePlaces pagePlaces,
-            @NotNull PluginDescriptor descriptor,
-            @NotNull TrafficLightMainConfigProcessor mainConfigProcessor)
+        @NotNull PagePlaces pagePlaces,
+        @NotNull PluginDescriptor descriptor,
+        @NotNull TrafficLightMainConfig trafficLightMainConfig)
     {
         super(pagePlaces);
 
-        _trafficLightMainSettings = mainConfigProcessor.getSettings();
+        _trafficLightMainConfig = trafficLightMainConfig;
 
         setPluginName("trafficLightPlugin");
         setIncludeUrl(descriptor.getPluginResourcesPath("/admin/TrafficLightSettings.jsp"));
@@ -50,6 +49,6 @@ public class TrafficLightSettingsAdminPage extends AdminPage
     {
         super.fillModel(model, request);
 
-        model.put("type", _trafficLightMainSettings.type().toString());
+        model.put("type", _trafficLightMainConfig.getType().toString());
     }
 }

@@ -1,7 +1,6 @@
 package com.localhost.teamcity.trafficLightPlugin.ui.admin;
 
 import com.intellij.openapi.diagnostic.Logger;
-import com.localhost.teamcity.trafficLightPlugin.config.TrafficLightMainSettings;
 import jetbrains.buildServer.controllers.BaseController;
 import jetbrains.buildServer.log.Loggers;
 import jetbrains.buildServer.web.openapi.PluginDescriptor;
@@ -19,11 +18,11 @@ public class TrafficLightSettingsController extends BaseController
     private PluginDescriptor _descriptor;
 
     public TrafficLightSettingsController(
-            @NotNull WebControllerManager manager,
-            @NotNull PluginDescriptor descriptor,
-            @NotNull TrafficLightMainSettings settings)
+        @NotNull WebControllerManager manager,
+        @NotNull PluginDescriptor descriptor)
     {
         _descriptor = descriptor;
+
         manager.registerController("/trafficLight/adminSettings.html", this);
     }
 
