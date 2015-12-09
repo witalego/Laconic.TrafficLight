@@ -43,6 +43,11 @@ public class TrafficLightMainConfig implements ChangeListener
         return _type;
     }
 
+    public void setType(ProtocolType type)
+    {
+        _type = type;
+    }
+
     private void load()
     {
         Log.info("Loading configuration file: " + configFile.getAbsolutePath());

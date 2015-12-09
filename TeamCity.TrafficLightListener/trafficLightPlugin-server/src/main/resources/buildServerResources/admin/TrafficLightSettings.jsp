@@ -1,5 +1,6 @@
+<%@ include file="/include.jsp" %>
 <div>
-    <form action="/yammerNotifier/adminSettings.html" method="post">
+    <form id="trafficLightSettingsAdminForm" action="/yammerNotifier/adminSettings.html" method="post" onsubmit="return TrafficLightSettingsAdmin.save()">
         <div>
             <span>Protocol: </span>
             <select name="type">
@@ -7,6 +8,12 @@
                 <option value="Tcp" ${type == 'Tcp' ? 'selected="selected"' : ''}>Tcp</option>
             </select>
         </div>
-        <input type="submit" value="Save">
+        <div>
+            <input type="submit" value="Save">
+        </div>
     </form>
+
+    <bs:linkScript>
+        ${jspHome}js/trafficLightSettingsAdmin.js
+    </bs:linkScript>
 </div>
