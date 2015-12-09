@@ -22,9 +22,9 @@ public class TrafficLightSettingsController extends BaseController
     private TrafficLightMainConfig _trafficLightMainConfig;
 
     public TrafficLightSettingsController(
-            @NotNull WebControllerManager manager,
-            @NotNull PluginDescriptor descriptor,
-            TrafficLightMainConfig trafficLightMainConfig)
+        @NotNull WebControllerManager manager,
+        @NotNull PluginDescriptor descriptor,
+        TrafficLightMainConfig trafficLightMainConfig)
     {
         _descriptor = descriptor;
         _trafficLightMainConfig = trafficLightMainConfig;
@@ -52,6 +52,6 @@ public class TrafficLightSettingsController extends BaseController
         //    //params = this.handleConfigurationChange(request);
         //}
 
-        return new ModelAndView(_descriptor.getPluginResourcesPath() + "admin/ajaxEdit.jsp", params);
+        return new ModelAndView(_descriptor.getPluginResourcesPath("/admin/ajaxEdit.jsp"), params);
     }
 }

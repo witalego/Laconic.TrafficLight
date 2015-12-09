@@ -1,6 +1,6 @@
 <%@ include file="/include.jsp" %>
 <div>
-    <form id="trafficLightSettingsAdminForm" action="/yammerNotifier/adminSettings.html" method="post" onsubmit="return TrafficLightSettingsAdmin.save()">
+    <form id="trafficLightSettingsAdminForm" action="/trafficLight/adminSettings.html" method="post" onsubmit="return TrafficLightSettingsAdmin.save()">
         <div>
             <span>Protocol: </span>
             <select name="type">
@@ -9,7 +9,8 @@
             </select>
         </div>
         <div>
-            <input type="submit" value="Save">
+            <forms:submit label="Save"/>
+            <!--<forms:saving/>-->
         </div>
     </form>
 

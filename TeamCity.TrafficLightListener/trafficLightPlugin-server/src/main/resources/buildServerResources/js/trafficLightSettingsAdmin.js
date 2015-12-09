@@ -18,6 +18,7 @@ var YammerNotifierAdmin =
                 function ()
                 {
                     $('saving').style.display = 'hidden';
+                    BS.reload();
                 })
              .fail(
                 function ()
