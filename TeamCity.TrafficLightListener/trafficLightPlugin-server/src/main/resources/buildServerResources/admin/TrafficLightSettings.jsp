@@ -1,20 +1,21 @@
 <%@ include file="/include.jsp" %>
 <div>
-    <form id="trafficLightSettingsAdminForm" action="/trafficLight/adminSettings.html" method="post" onsubmit="return TrafficLightSettingsAdmin.save()">
+    <form id="trafficLightSettingsAdminForm">
         <div>
             <span>Protocol: </span>
-            <select name="type">
+            <select id="type">
                 <option value="Udp" ${type == 'Udp' ? 'selected="selected"' : ''}>Udp</option>
                 <option value="Tcp" ${type == 'Tcp' ? 'selected="selected"' : ''}>Tcp</option>
             </select>
         </div>
         <div>
-            <forms:submit label="Save"/>
+            <input type="submit" value="Save" />
+            <!--<forms:submit label="Save"/>-->
             <!--<forms:saving/>-->
         </div>
     </form>
 
     <bs:linkScript>
-        ${jspHome}js/trafficLightSettingsAdmin.js
+        ${teamcityPluginResourcesPath}js/trafficLightSettingsAdmin.js
     </bs:linkScript>
 </div>

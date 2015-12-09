@@ -29,3 +29,18 @@ var YammerNotifierAdmin =
         return false;
     }
 };
+
+$(function() {
+    $('#trafficLightSettingsAdminForm').submit(function(event) {
+        event.preventDefault();
+
+        $.post("/trafficLight/adminSettings.html", { type: $("#type").val() })
+            .done(function () {
+                alert("Done!")
+                //BS.reload();
+            })
+            .fail(function () {
+                alert("Failed to save configuration!")
+            });
+    });
+});
