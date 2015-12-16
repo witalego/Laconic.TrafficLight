@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+       default-autowire="constructor">
+
+    <bean id="log" class="org.witalego.logging.Log" />
+    <bean id="mainConfig" class="org.witalego.config.MainConfig"/>
+    <bean id="udpConfig" class="org.witalego.config.server.UdpConfig"/>
+    <bean id="tcpConfig" class="org.witalego.config.server.TcpConfig"/>
+    <bean id="configChangeListener" class="org.witalego.config.ConfigChangeListener" />
+    <bean id="settingsController" class="org.witalego.ui.SettingsController"/>
+    <bean id="trafficLightAdminPage" class="org.witalego.ui.TrafficLightAdminPage"/>
+    <bean id="buildServerWrapper" class="org.witalego.server.BuildServerWrapper" />
+
+    <bean id="udpServer" class="org.witalego.server.udp.UdpServer" />
+    <bean id="tcpServer" class="org.witalego.server.tcp.TcpServer" />
+    <bean id="serverFactory" class="org.witalego.server.ServerFactory">
+        <constructor-arg name="servers">
+            <map>
+                <entry key="Udp" value-ref="udpServer" />
+                <entry key="Tcp" value-ref="tcpServer" />
+            </map>
+        </constructor-arg>
+    </bean>
+
+    <bean id="server" class="org.witalego.server.Server" />
+    <bean id="trafficLightServer" class="org.witalego.TrafficLightServer" init-method="register" />
+</beans>

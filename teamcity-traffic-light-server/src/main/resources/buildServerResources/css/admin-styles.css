@@ -1,0 +1,16 @@
+#errors ul li
+{
+    color: red;
+}
+
+.config-errors ul li
+{
+    color: red;
+}
+
+.trafficLightVersionInfo
+{
+    color: #888;
+    font-size: 90%;
+    float:right;
+}
