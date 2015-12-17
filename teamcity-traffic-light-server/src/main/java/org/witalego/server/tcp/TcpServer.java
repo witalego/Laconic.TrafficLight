@@ -5,6 +5,7 @@ import org.witalego.contracts.listeners.configs.ITcpConfigListener;
 import org.witalego.contracts.listeners.server.ITcpClientListener;
 import org.witalego.contracts.logging.ILog;
 import org.witalego.contracts.server.IServer;
+import org.witalego.server.BuildServerWrapper;
 
 import java.io.Closeable;
 import java.io.IOException;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 
 public class TcpServer implements IServer, ITcpClientListener, ITcpConfigListener
 {
+    private BuildServerWrapper _buildServerWrapper;
     private final ILog _log;
 
     private ServerSocket _socket = null;
@@ -23,8 +25,9 @@ public class TcpServer implements IServer, ITcpClientListener, ITcpConfigListene
 
     private Integer _port = null;
 
-    public TcpServer(ILog log)
+    public TcpServer(BuildServerWrapper buildServerWrapper, ILog log)
     {
+        _buildServerWrapper = buildServerWrapper;
         _log = log;
     }
 
@@ -43,7 +46,7 @@ public class TcpServer implements IServer, ITcpClientListener, ITcpConfigListene
             _log.info("TcpServer.startServer: creating socket");
             _socket = new ServerSocket(_port);
 
-            _log.info("TcpServer.startServer: starting thred");
+            _log.info("TcpServer.startServer: starting thread");
             _thread = new TcpServerThread(_socket, this, _log);
             _thread.start();
 
@@ -87,16 +90,8 @@ public class TcpServer implements IServer, ITcpClientListener, ITcpConfigListene
 
         for (Socket clientSocket : _clientSockets.toArray(new Socket[_clientSockets.size()]))
         {
-            try
+            if (!send(clientSocket, code))
             {
-                OutputStream stream = clientSocket.getOutputStream();
-                stream.write(new byte[] {0x28, 0x06, code});
-                stream.flush();
-            }
-            catch (IOException e)
-            {
-                _log.error("Error occurred during sending code", e);
-
                 _clientSockets.remove(clientSocket);
             }
         }
@@ -124,11 +119,31 @@ public class TcpServer implements IServer, ITcpClientListener, ITcpConfigListene
     {
         _log.info("TcpServer.connected: client was connected");
         _clientSockets.add(socket);
+
+        _log.info("TcpServer.connected: sending code to newly connected client");
+        send(socket, _buildServerWrapper.getCode());
     }
 
     private Boolean isRunning()
     {
         return _socket != null;
+    }
+
+    private Boolean send(Socket socket, byte code)
+    {
+        try
+        {
+            OutputStream stream = socket.getOutputStream();
+            stream.write(new byte[] {0x28, 0x06, code});
+            stream.flush();
+        }
+        catch (IOException e)
+        {
+            _log.error("Error occurred during sending code", e);
+            return false;
+        }
+
+        return true;
     }
 
     private void close(Closeable closeable)
