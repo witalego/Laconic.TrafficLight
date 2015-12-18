@@ -20,6 +20,11 @@ public class Log implements ILog
         info(String.format(s, args));
     }
 
+    public void warning(String s)
+    {
+        _logger.warn(formatMessage(s));
+    }
+
     public void error(String s, Throwable e)
     {
         _logger.error(formatMessage(s), e);

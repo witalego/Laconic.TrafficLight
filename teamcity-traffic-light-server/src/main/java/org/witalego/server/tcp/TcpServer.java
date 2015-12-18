@@ -92,6 +92,7 @@ public class TcpServer implements IServer, ITcpClientListener, ITcpConfigListene
         {
             if (!send(clientSocket, code))
             {
+                _log.info("TcpServer.send: remove client from queue");
                 _clientSockets.remove(clientSocket);
             }
         }
@@ -139,7 +140,7 @@ public class TcpServer implements IServer, ITcpClientListener, ITcpConfigListene
         }
         catch (IOException e)
         {
-            _log.error("Error occurred during sending code", e);
+            _log.warning("Error occurred during sending code");
             return false;
         }
 
